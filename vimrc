@@ -1,9 +1,12 @@
+" general settings
 set nocompatible
 set hidden 			"change buffer without saving
 set noswapfile			"don't create swap files
 set autoread			"Set to auto read when a file is changed from the outside
 set history=700			"remember 700 steps for history
 set showcmd			"show commands
+filetype plugin on
+let $VIMHOME = "~/.vim/"
 
 "tabs & spaces
 set shiftwidth=2
