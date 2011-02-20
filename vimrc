@@ -1,61 +1,75 @@
+" pathogen config
+call pathogen#runtime_append_all_bundles() 
+call pathogen#helptags() 
+
 " general settings
 set nocompatible
 set hidden 			"change buffer without saving
 set noswapfile			"don't create swap files
 set autoread			"Set to auto read when a file is changed from the outside
 let $VIMHOME = "~/.vim/"
-autocmd! bufwritepost vimrc source ~/.vim_runtime/vimrc " When vimrc is edited, reload it
+autocmd! bufwritepost vimrc source ~/.vim/vimrc " When vimrc is edited, reload it
 set backspace=indent,eol,start  "Intuitive backspacing.
 colorscheme desert 		"load colorscheme
 
-"code-foo
+" code-foo
 syntax on 			"enable syntax-highlighting by default
 set number 			"show linenumbers
 set ruler
 
-"tabs & spaces
+" tabs & spaces
 set shiftwidth=2
 set tabstop=2
 
-"folding
+" folding
 set foldmethod=manual "set folding-method
 "set foldcolumn=1 "show folds
 
-"highlighting searchresults
+" highlighting searchresults
 set incsearch 			"highlight searchresults while typing
 set hlsearch  			"highlight searchresults generally
 
-"command-line
+" command-line
 set cmdheight=2			"height of the commd line
 set laststatus=2                "Show the status line all the time
 set showcmd			"show commands
 set history=700			"remember 700 steps for history
 
-"Key Mappings
+" Key Mappings
 let mapleader = "," 		"remap leader key
 let g:mapleader = "," 		"remap leader key in MacVim GUI
 
-"mappings for tab-navigation
-map <leader>tt :tabnew<cr>
-map <leader>te :tabedit
-"map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove
+	" mappings for tab-navigation
+	map <leader>tt :tabnew<cr>
+	map <leader>te :tabedit
+	"map <leader>tc :tabclose<cr>
+	map <leader>to :tabonly<cr>
+	map <leader>tn :tabnext<cr>
+	map <leader>tp :tabprevious<cr>
+	map <leader>tf :tabfirst<cr>
+	map <leader>tl :tablast<cr>
+	map <leader>tm :tabmove
 
-"settings in MacVim GUI
+	" arrow-key masochism
+	inoremap  <Up>     <NOP>
+	inoremap  <Down>   <NOP>
+	inoremap  <Left>   <NOP>
+	inoremap  <Right>  <NOP>
+	noremap   <Up>     <NOP>
+	noremap   <Down>   <NOP>
+	noremap   <Left>   <NOP>
+	noremap   <Right>  <NOP>
+
+" settings in MacVim GUI
 if has("gui_running")
   set gfn=Menlo:h16		"set font
   set guioptions=-t		"hide toolbar
 endif
 
-"NERDcommenter
+" NERDcommenter
 filetype plugin on
 
-"smart keyword completion with <Tab>
+" Function Smart_TabComplete for smart keyword completion with <Tab>
 function! Smart_TabComplete()
   let line = getline('.')                         " curline
   let substr = strpart(line, -1, col('.')+1)      " from start to cursor
@@ -73,5 +87,7 @@ function! Smart_TabComplete()
     return "\<C-X>\<C-O>"                         " plugin matching
   endif
 endfunction
-"map the key
+	
+" map the key
 inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+" End Function Smart_TabComplete
