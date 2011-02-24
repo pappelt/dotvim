@@ -21,6 +21,9 @@
 	let mapleader = "," 		"remap leader key
 	let g:mapleader = "," 		"remap leader key in MacVim GUI
 
+	"remap jj to ESC in insert-mode
+	inoremap jj <ESC> 
+
 	" mappings for tab-navigation
 	map <leader>tt :tabnew<cr>
 	map <leader>te :tabedit
@@ -32,19 +35,26 @@
 	map <leader>tl :tablast<cr>
 	map <leader>tm :tabmove
 
+	"mappings for split-window navigation
+	noremap <c-w>h <c-w>=<c-w>h<c-w>20>
+	noremap <c-w>l <c-w>=<c-w>l<c-w>20>
+
 	" arrow-key masochism
-	inoremap  <Up>     <NOP>
-	inoremap  <Down>   <NOP>
-	inoremap  <Left>   <NOP>
-	inoremap  <Right>  <NOP>
-	noremap   <Up>     <NOP>
-	noremap   <Down>   <NOP>
-	noremap   <Left>   <NOP>
-	noremap   <Right>  <NOP>
+	"inoremap  <Up>     <NOP>
+	"inoremap  <Down>   <NOP>
+	"inoremap  <Left>   <NOP>
+	"inoremap  <Right>  <NOP>
+	"noremap   <Up>     <NOP>
+	"noremap   <Down>   <NOP>
+	"noremap   <Left>   <NOP>
+	"noremap   <Right>  <NOP>
 
 	" move by screen line instead by file line
 	nnoremap j gj
 	nnoremap k gk
+	vnoremap j gj
+	vnoremap k gk
+
 " code-foo
 	syntax on 			"enable syntax-highlighting by default
 	"show linenumbers (doesn't work in conjunction with set relativenumber)
@@ -164,38 +174,38 @@ function! SetArrowKeysAsTextShifters()
     nmap <silent> <Right> >>
     nnoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>
     nnoremap <silent> <Down>  <Esc>:call AddEmptyLineAbove()<CR>
-    nnoremap <silent> <S-Up> <Esc>:call DelEmptyLineBelow()<CR>
-    nnoremap <silent> <S-Down> <Esc>:call AddEmptyLineBelow()<CR>
+    nnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>
+    nnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>
  
     " visual mode
     vmap <silent> <Left> <
     vmap <silent> <Right> >
     vnoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>gv
     vnoremap <silent> <Down>  <Esc>:call AddEmptyLineAbove()<CR>gv
-    vnoremap <silent> <M-Up> <Esc>:call DelEmptyLineBelow()<CR>gv
-    vnoremap <silent> <M-Down> <Esc>:call AddEmptyLineBelow()<CR>gv
+    vnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>gv
+    vnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>gv
  
     " insert mode
     imap <silent> <Left> <C-D>
     imap <silent> <Right> <C-T>
     inoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>a
     inoremap <silent> <Down> <Esc>:call AddEmptyLineAbove()<CR>a
-    inoremap <silent> <M-Up> <Esc>:call DelEmptyLineBelow()<CR>a
-    inoremap <silent> <M-Down> <Esc>:call AddEmptyLineBelow()<CR>a
+    inoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>a
+    inoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>a
  
     " disable modified versions we are not using
-    "nnoremap  <S-Up>     <NOP>
-    "nnoremap  <S-Down>   <NOP>
-    nnoremap  <S-Left>   <NOP>
-    nnoremap  <S-Right>  <NOP>
-    "vnoremap  <S-Up>     <NOP>
-    "vnoremap  <S-Down>   <NOP>
-    vnoremap  <S-Left>   <NOP>
-    vnoremap  <S-Right>  <NOP>
-    inoremap  <S-Up>     <NOP>
-    inoremap  <S-Down>   <NOP>
-    inoremap  <S-Left>   <NOP>
-    inoremap  <S-Right>  <NOP>
+		nnoremap  <C-Up>     <NOP>
+		nnoremap  <C-Down>   <NOP>
+    nnoremap  <C-Left>   <NOP>
+    nnoremap  <C-Right>  <NOP>
+		vnoremap  <C-Up>     <NOP>
+		vnoremap  <C-Down>   <NOP>
+    vnoremap  <C-Left>   <NOP>
+    vnoremap  <C-Right>  <NOP>
+    inoremap  <C-Up>     <NOP>
+    inoremap  <C-Down>   <NOP>
+    inoremap  <C-Left>   <NOP>
+    inoremap  <C-Right>  <NOP>
 endfunction
  
 call SetArrowKeysAsTextShifters()
