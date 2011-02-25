@@ -17,13 +17,13 @@ let colors_name = "busybee"
 if version >= 700
   hi CursorLine    guibg=#202020 ctermbg=234
   hi CursorColumn  guibg=#202020 ctermbg=234
-  hi MatchParen    guifg=#ff9800 guibg=#FF0705 gui=bold ctermfg=157 ctermbg=237 cterm=bold
+	hi MatchParen    guifg=#d0ffc0 guibg=#808080 gui=bold ctermfg=157 ctermbg=237 cterm=bold
   hi Pmenu 		   guifg=#ffffff guibg=#202020 ctermfg=255 ctermbg=238
   hi PmenuSel 	   guifg=#000000 guibg=#b1d631 ctermfg=0 ctermbg=148
 endif
 
 " General colors
-hi Cursor 		   guifg=NONE    guibg=#FF0705 gui=none ctermbg=241
+hi Cursor 		   guifg=NONE    guibg=#ff0705 gui=none ctermbg=241
 hi Normal 		   guifg=#e2e2e5 guibg=#202020 gui=none ctermfg=253 ctermbg=234
 hi NonText 		   guifg=#808080 guibg=#202020 gui=none ctermfg=244 ctermbg=235
 hi LineNr 		   guifg=#808080 guibg=#202020 gui=none ctermfg=244 ctermbg=232
