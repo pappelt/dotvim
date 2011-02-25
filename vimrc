@@ -10,7 +10,7 @@
 	set autoread			"Set to auto read when a file is changed from the outside
 	set backspace=indent,eol,start  "Intuitive backspacing.
 	set vb t_vb= "turn off any errorbell/flash/something
-	colorscheme desert 		"load colorscheme
+	colorscheme BusyBee 		"load colorscheme
 
 " autocommands and some other magic
 	autocmd! bufwritepost vimrc source ~/.vim/vimrc "when vimrc is edited, reload it
