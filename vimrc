@@ -22,7 +22,7 @@
 	let g:mapleader = "," 		"remap leader key in MacVim GUI
 
 	"remap jj to ESC in insert-mode
-	inoremap jj <ESC> 
+	inoremap jj <ESC>
 
 	" mappings for tab-navigation
 	map <leader>tt :tabnew<cr>
