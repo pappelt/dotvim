@@ -64,7 +64,7 @@
 	"display how far away each line is from the current one, instead of showing the absolute line number
 	set relativenumber
 	set ruler
-	set undofile
+	"set undofile
 
 " tabs & spaces
 	set shiftwidth=2
