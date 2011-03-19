@@ -21,7 +21,11 @@
 	let mapleader = "," 		"remap leader key
 	let g:mapleader = "," 		"remap leader key in MacVim GUI
 
-	"remap jj to ESC in insert-mode
+	" mapping tab to keyword-completion
+	inoremap <tab> <C-P>
+	inoremap <S-tab> <C-N>
+
+	" remap jj to ESC in insert-mode
 	inoremap jj <ESC>
 
 	" mappings for tab-navigation
@@ -36,6 +40,7 @@
 	map <leader>tm :tabmove
 
 	"mappings for split-window navigation
+	"with resizing
 	noremap <c-w>h <c-w>=<c-w>h<c-w>20>
 	noremap <c-w>l <c-w>=<c-w>l<c-w>20>
 
@@ -121,8 +126,7 @@ function! Smart_TabComplete()
 endfunction
 	
 " map the key
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-" End Function Smart_TabComplete
+"inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " Setting the Arrow-Keys as Text-Shiters
 function! DelEmptyLineAbove()
