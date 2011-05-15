@@ -14,7 +14,7 @@
 
 " autocommands and some other magic
 	autocmd! bufwritepost vimrc source ~/.vim/vimrc "when vimrc is edited, reload it
-	au FocusLost * :wa "save all buffers on lost focus
+	"au FocusLost * :wa "save all buffers on lost focus
 	filetype plugin on " currently used because of NERDcommenter
 
 " Key Mappings
@@ -72,8 +72,10 @@
 	"set undofile
 
 " tabs & spaces
-	set shiftwidth=2
 	set tabstop=2
+	set shiftwidth=2
+	set noexpandtab
+	set autoindent
 
 " folding
 	set foldmethod=manual "set folding-method
