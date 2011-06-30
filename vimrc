@@ -66,10 +66,14 @@
 	"but is also not necessary because you always can jump to a
 	"specific line (stated in an errormessage for example) with :{linenumber}<cr>
 	"set number
-	"display how far away each line is from the current one, instead of showing the absolute line number
-	set relativenumber
+	"if v:version < 730
+		"set number "show absolute line number
+	"else
+		set relativenumber "display how far away each line is from the current one, instead absolute line number
+	"endif
+	
 	set ruler
-	"set undofile
+	set undofile
 
 " tabs & spaces
 	set tabstop=2
@@ -86,19 +90,19 @@
 	" i currently don't get how this should help me
 	"nnoremap / /\v
 	"vnoremap / /\v
-	set ignorecase 			"all-lowercase string = search is case-insensitive
-	set smartcase 			"string with some uppercased letters = search is case-sensitive
-	set incsearch 			"highlight searchresults while typing
-	set hlsearch  			"highlight searchresults generally
+	set ignorecase 			" all-lowercase string = search is case-insensitive
+	set smartcase 			" string with some uppercased letters = search is case-sensitive
+	set incsearch 			" highlight searchresults while typing
+	set hlsearch  			" highlight searchresults generally
 
 	" map <leader><space> to clear highlighted searchresults when done
 	nnoremap <leader><space> :noh<cr>
 
 " command-line
-set cmdheight=2			"height of the commd line
-set laststatus=2                "Show the status line all the time
-set showcmd			"show commands
-set history=700			"remember 700 steps for history
+	set cmdheight=2  " height of the commd line
+	set laststatus=2 " Show the status line all the time
+	set showcmd      " show commands
+	set history=700  " remember 700 steps for history
 
 
 " settings in MacVim GUI
