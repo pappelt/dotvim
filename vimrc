@@ -13,38 +13,45 @@
 	colorscheme BusyBee 		"load colorscheme
 
 " autocommands and some other magic
-	autocmd! bufwritepost vimrc source ~/.vim/vimrc "when vimrc is edited, reload it
+	autocmd! bufwritepost vimrc source ~/.vimrc "when vimrc is edited, reload it
 	"au FocusLost * :wa "save all buffers on lost focus
 	filetype plugin on " currently used because of NERDcommenter
 
 " Key Mappings
 	let mapleader = "," 		"remap leader key
 	let g:mapleader = "," 		"remap leader key in MacVim GUI
+  noremap ; :
 
-	" mapping tab to keyword-completion
-	inoremap <tab> <C-P>
-	inoremap <S-tab> <C-N>
+" mapping tab to keyword-completion
+	inoremap <tab> <C-N>
+	inoremap <S-tab> <C-P>
 
-	" remap jj to ESC in insert-mode
+" remap jj to ESC in insert-mode
 	inoremap jj <ESC>
 
-	" mappings for tab-navigation
+" mappings for tab-navigation
 	map <leader>tt :tabnew<cr>
 	map <leader>te :tabedit
-	"map <leader>tc :tabclose<cr>
 	map <leader>to :tabonly<cr>
 	map <leader>tn :tabnext<cr>
 	map <leader>tp :tabprevious<cr>
 	map <leader>tf :tabfirst<cr>
 	map <leader>tl :tablast<cr>
 	map <leader>tm :tabmove
+	"map <leader>tc :tabclose<cr>
 
-	"mappings for split-window navigation
-	"with resizing
-	noremap <c-w>h <c-w>=<c-w>h<c-w>20>
-	noremap <c-w>l <c-w>=<c-w>l<c-w>20>
+"mappings for split-window navigation
+"with resizing
+  noremap <c-h> <c-w>=<c-w>h<c-w>20>
+  noremap <c-l> <c-w>=<c-w>l<c-w>20>
+  "noremap <c-w>h <c-w>20<<c-w>h<c-w>20>
+  "noremap <c-w>l <c-w>20<<c-w>l<c-w>20>
+  nnoremap <C-j> :exe "resize " . (winheight(0) * 3/2)<CR>
+  nnoremap <C-k> :exe "resize " . (winheight(0) * 2/3)<CR>
+  "nnoremap <C-l> :exe "resize " . (winwidth(0) * 2/3)<c-l><CR>
+  "nnoremap <C-h> :exe "resize " . (winwidth(0) * 3/2)<c-h><CR>
 
-	" arrow-key masochism
+" arrow-key masochis
 	"inoremap  <Up>     <NOP>
 	"inoremap  <Down>   <NOP>
 	"inoremap  <Left>   <NOP>
@@ -54,7 +61,7 @@
 	"noremap   <Left>   <NOP>
 	"noremap   <Right>  <NOP>
 
-	" move by screen line instead by file line
+" move by screen line instead by file line
 	nnoremap j gj
 	nnoremap k gk
 	vnoremap j gj
@@ -66,20 +73,17 @@
 	"but is also not necessary because you always can jump to a
 	"specific line (stated in an errormessage for example) with :{linenumber}<cr>
 	"set number
-	"if v:version < 730
-		"set number "show absolute line number
-	"else
-		set relativenumber "display how far away each line is from the current one, instead absolute line number
-	"endif
+  set relativenumber "display how far away each line is from the current one, instead absolute line number
 	
 	set ruler
-	set undofile
+	"set undofile
 
-" tabs & spaces
+" tabs, spaces & indentation
+	set expandtab
 	set tabstop=2
 	set shiftwidth=2
-	set noexpandtab
-	set autoindent
+	set smartindent
+	"set autoindent
 
 " folding
 	set foldmethod=manual "set folding-method
@@ -107,78 +111,78 @@
 
 " settings in MacVim GUI
 if has("gui_running")
-  set gfn=Menlo:h16		"set font
+  set gfn=Menlo:h18		"set font
   set guioptions=-t		"hide toolbar
 endif
 
 
 " Function Smart_TabComplete for smart keyword completion with <Tab>
-function! Smart_TabComplete()
-  let line = getline('.')                         " curline
-  let substr = strpart(line, -1, col('.')+1)      " from start to cursor
-  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
-  if (strlen(substr)==0)                          " nothing to match on empty string
-    return "\<tab>"
-  endif
-  let has_period = match(substr, '\.') != -1      " position of period, if any
-  let has_slash = match(substr, '\/') != -1       " position of slash, if any
-  if (!has_period && !has_slash)
-    return "\<C-X>\<C-P>"                         " existing text matching
-  elseif ( has_slash )
-    return "\<C-X>\<C-F>"                         " file matching
-  else
-    return "\<C-X>\<C-O>"                         " plugin matching
-  endif
-endfunction
+  function! Smart_TabComplete()
+    let line = getline('.')                         " curline
+    let substr = strpart(line, -1, col('.')+1)      " from start to cursor
+    let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+    if (strlen(substr)==0)                          " nothing to match on empty string
+      return "\<tab>"
+    endif
+    let has_period = match(substr, '\.') != -1      " position of period, if any
+    let has_slash = match(substr, '\/') != -1       " position of slash, if any
+    if (!has_period && !has_slash)
+      return "\<C-X>\<C-P>"                         " existing text matching
+    elseif ( has_slash )
+      return "\<C-X>\<C-F>"                         " file matching
+    else
+      return "\<C-X>\<C-O>"                         " plugin matching
+    endif
+  endfunction
 	
 " map the key
 "inoremap <tab> <c-r>=Smart_TabComplete()<CR>
 
 " Setting the Arrow-Keys as Text-Shiters
-function! DelEmptyLineAbove()
+  function! DelEmptyLineAbove()
     if line(".") == 1
-        return
+      return
     endif
     let l:line = getline(line(".") - 1)
     if l:line =~ '^\s*$'
-        let l:colsave = col(".")
-        .-1d
-        silent normal! <C-y>
-        call cursor(line("."), l:colsave)
+      let l:colsave = col(".")
+      .-1d
+      silent normal! <C-y>
+      call cursor(line("."), l:colsave)
     endif
-endfunction
+  endfunction
  
-function! AddEmptyLineAbove()
+  function! AddEmptyLineAbove()
     let l:scrolloffsave = &scrolloff
     " Avoid jerky scrolling with ^E at top of window
     set scrolloff=0
     call append(line(".") - 1, "")
     if winline() != winheight(0)
-        silent normal! <C-e>
+      silent normal! <C-e>
     endif
     let &scrolloff = l:scrolloffsave
-endfunction
+  endfunction
  
-function! DelEmptyLineBelow()
+  function! DelEmptyLineBelow()
     if line(".") == line("$")
-        return
+      return
     endif
     let l:line = getline(line(".") + 1)
     if l:line =~ '^\s*$'
-        let l:colsave = col(".")
-        .+1d
-        ''
-        call cursor(line("."), l:colsave)
+      let l:colsave = col(".")
+      .+1d
+      ''
+      call cursor(line("."), l:colsave)
     endif
-endfunction
+  endfunction
  
-function! AddEmptyLineBelow()
+  function! AddEmptyLineBelow()
     call append(line("."), "")
-endfunction
+  endfunction
 
 " Arrow key remapping: Up/Dn = move line up/dn; Left/Right = indent/unindent
 " `Ctrl-Up` and `Ctrl-Down`, instead, deletes or inserts a blank line below the current line
-function! SetArrowKeysAsTextShifters()
+  function! SetArrowKeysAsTextShifters()
     " normal mode
     nmap <silent> <Left> <<
     nmap <silent> <Right> >>
@@ -216,7 +220,7 @@ function! SetArrowKeysAsTextShifters()
     inoremap  <C-Down>   <NOP>
     inoremap  <C-Left>   <NOP>
     inoremap  <C-Right>  <NOP>
-endfunction
+  endfunction
  
-call SetArrowKeysAsTextShifters()
+  call SetArrowKeysAsTextShifters()
 " End setting the Arrow-Keys as Text-Shiters
