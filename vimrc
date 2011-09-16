@@ -4,22 +4,33 @@
 
 " general settings
 	set nocompatible
-	let $VIMHOME = "~/.vim/"
-	set hidden 			"change buffer without saving
-	set noswapfile			"don't create swap files
-	set autoread			"Set to auto read when a file is changed from the outside
-	set backspace=indent,eol,start  "Intuitive backspacing.
-	set vb t_vb= "turn off any errorbell/flash/something
-	colorscheme BusyBee 		"load colorscheme
+	let $VIMHOME =                 " ~/.vim/
+	set hidden                     " change buffer without saving
+	set noswapfile                 " don't create swap files
+	set autoread                   " Set to auto read when a file is changed from the outside
+	set backspace=indent,eol,start " Intuitive backspacing.
+	set vb t_vb=                   " turn off any errorbell/flash/something
+  set nobackup
+  set nowritebackup
+
+  let guiColorScheme = "BusyBee"
+  if (exists("guiColorScheme"))
+    colorscheme BusyBee 		       " load colorscheme BusyBee
+    set cursorline
+  else
+    colorscheme default            " load colorscheme default
+  endif
 
 " autocommands and some other magic
-	autocmd! bufwritepost vimrc source ~/.vimrc "when vimrc is edited, reload it
-	"au FocusLost * :wa "save all buffers on lost focus
-	filetype plugin on " currently used because of NERDcommenter
+  if has("autocmd")
+    autocmd! bufwritepost vimrc source ~/.vimrc " when vimrc is edited, reload it
+    au FocusLost * :wa                          " save all buffers on lost focus
+    filetype plugin indent on                   " currently used because of NERDcommenter
+  endif
 
 " Key Mappings
-	let mapleader = "," 		"remap leader key
-	let g:mapleader = "," 		"remap leader key in MacVim GUI
+  let mapleader =   ","  " remap leader key
+	let g:mapleader = ","  " remap leader key in MacVim GUI
   noremap ; :
 
 " mapping tab to keyword-completion
@@ -31,7 +42,7 @@
 
 " mappings for tab-navigation
 	map <leader>tt :tabnew<cr>
-	map <leader>te :tabedit
+	map <leader>te :tabedit<cr>
 	map <leader>to :tabonly<cr>
 	map <leader>tn :tabnext<cr>
 	map <leader>tp :tabprevious<cr>
@@ -73,17 +84,18 @@
 	"but is also not necessary because you always can jump to a
 	"specific line (stated in an errormessage for example) with :{linenumber}<cr>
 	"set number
-  set relativenumber "display how far away each line is from the current one, instead absolute line number
-	
+  if version >= 700
+    set relativenumber "display how far away each line is from the current one, instead absolute line number
+  else
+    set numbers
+  endif    
 	set ruler
-	"set undofile
 
 " tabs, spaces & indentation
 	set expandtab
 	set tabstop=2
 	set shiftwidth=2
 	set smartindent
-	"set autoindent
 
 " folding
 	set foldmethod=manual "set folding-method
@@ -91,9 +103,6 @@
 
 " search (and replace)
 	" make searches use normal regexes
-	" i currently don't get how this should help me
-	"nnoremap / /\v
-	"vnoremap / /\v
 	set ignorecase 			" all-lowercase string = search is case-insensitive
 	set smartcase 			" string with some uppercased letters = search is case-sensitive
 	set incsearch 			" highlight searchresults while typing
@@ -110,10 +119,13 @@
 
 
 " settings in MacVim GUI
-if has("gui_running")
-  set gfn=Menlo:h18		"set font
-  set guioptions=-t		"hide toolbar
-endif
+  if has("gui_running")
+    set co=174        " set cols to fill the whole screen
+    set lines=57      " set lines to fill the whole screen
+    set gfn=Menlo:h18 " set font
+    set guioptions=-t " hide toolbar
+    set gcr=n-v-c:block-Cursor/block-Cursor-blinkwait300-blinkon200-blinkoff0,i-ci:hor30-Cursor-blinkwait300-blinkon200-blinkoff0
+  endif
 
 
 " Function Smart_TabComplete for smart keyword completion with <Tab>
