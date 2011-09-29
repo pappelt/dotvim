@@ -4,7 +4,7 @@
 
 " general settings
 	set nocompatible
-	let $VIMHOME =                 " ~/.vim/
+	let $VIMHOME="~/.vim/"
 	set hidden                     " change buffer without saving
 	set noswapfile                 " don't create swap files
 	set autoread                   " Set to auto read when a file is changed from the outside
@@ -12,6 +12,7 @@
 	set vb t_vb=                   " turn off any errorbell/flash/something
   set nobackup
   set nowritebackup
+  set nowrap
 
   let guiColorScheme = "BusyBee"
   if (exists("guiColorScheme"))
@@ -24,7 +25,6 @@
 " autocommands and some other magic
   if has("autocmd")
     autocmd! bufwritepost vimrc source ~/.vimrc " when vimrc is edited, reload it
-    au FocusLost * :wa                          " save all buffers on lost focus
     filetype plugin indent on                   " currently used because of NERDcommenter
   endif
 
@@ -42,7 +42,7 @@
 
 " mappings for tab-navigation
 	map <leader>tt :tabnew<cr>
-	map <leader>te :tabedit<cr>
+	"map <leader>te :tabedit<cr>
 	map <leader>to :tabonly<cr>
 	map <leader>tn :tabnext<cr>
 	map <leader>tp :tabprevious<cr>
@@ -120,8 +120,8 @@
 
 " settings in MacVim GUI
   if has("gui_running")
-    set co=174        " set cols to fill the whole screen
-    set lines=57      " set lines to fill the whole screen
+    set co=174        " set cols to fill the whole screen on 17" MBP
+    set lines=57      " set lines to fill the whole screen on 17" MBP
     set gfn=Menlo:h18 " set font
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkwait300-blinkon200-blinkoff0,i-ci:hor30-Cursor-blinkwait300-blinkon200-blinkoff0
