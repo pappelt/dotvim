@@ -50,13 +50,13 @@
 
   " tab-navigation
     map <leader>tt :tabnew<cr>
-    map <leader>te :tabedit<cr>
     map <leader>to :tabonly<cr>
     map <leader>tn :tabnext<cr>
     map <leader>tp :tabprevious<cr>
     map <leader>tf :tabfirst<cr>
     map <leader>tl :tablast<cr>
-    map <leader>tm :tabmove
+    map <leader>tm :tabmove 
+    map <leader>te :tabedit 
 
   " mappings for split-window navigation
   " with resizing
@@ -68,16 +68,6 @@
     nnoremap <C-k> :exe "resize " . (winheight(0) * 2/3)<CR>
     "nnoremap <C-l> :exe "resize " . (winwidth(0) * 2/3)<c-l><CR>
     "nnoremap <C-h> :exe "resize " . (winwidth(0) * 3/2)<c-h><CR>
-
-  " arrow-key masochis
-    "inoremap  <Up>     <NOP>
-    "inoremap  <Down>   <NOP>
-    "inoremap  <Left>   <NOP>
-    "inoremap  <Right>  <NOP>
-    "noremap   <Up>     <NOP>
-    "noremap   <Down>   <NOP>
-    "noremap   <Left>   <NOP>
-    "noremap   <Right>  <NOP>
 
 " code-foo
 	syntax on 			"enable syntax-highlighting by default
@@ -100,7 +90,6 @@
 
 " folding
 	set foldmethod=manual "set folding-method
-  set foldcolumn=1 "show folds
 
 " search (and replace)
 	" make searches use normal regexes
@@ -237,3 +226,4 @@
  
   call SetArrowKeysAsTextShifters()
 " End setting the Arrow-Keys as Text-Shiters
+nnoremap <F5> :GundoToggle<CR>
