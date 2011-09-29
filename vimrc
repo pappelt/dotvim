@@ -33,73 +33,74 @@
 	let g:mapleader = ","  " remap leader key in MacVim GUI
   noremap ; :
 
-" mapping tab to keyword-completion
-	inoremap <tab> <C-N>
-	inoremap <S-tab> <C-P>
+  " in insert-mode
+  "===============
+    " tab to keyword-completion
+    inoremap <tab> <C-N>
+    inoremap <S-tab> <C-P>
 
-" remap jj to ESC in insert-mode
-	inoremap jj <ESC>
+    " remap jj to ESC
+    inoremap jj <ESC>
 
-" mappings for tab-navigation
-	map <leader>tt :tabnew<cr>
-	"map <leader>te :tabedit<cr>
-	map <leader>to :tabonly<cr>
-	map <leader>tn :tabnext<cr>
-	map <leader>tp :tabprevious<cr>
-	map <leader>tf :tabfirst<cr>
-	map <leader>tl :tablast<cr>
-	map <leader>tm :tabmove
-	"map <leader>tc :tabclose<cr>
+  " in normal mode
+  "===============
+    " tab to scroll a few lines up/down
+    noremap <tab> <C-E>
+    noremap <S-tab> <C-Y>
 
-"mappings for split-window navigation
-"with resizing
-  noremap <c-h> <c-w>=<c-w>h<c-w>20>
-  noremap <c-l> <c-w>=<c-w>l<c-w>20>
-  "noremap <c-w>h <c-w>20<<c-w>h<c-w>20>
-  "noremap <c-w>l <c-w>20<<c-w>l<c-w>20>
-  nnoremap <C-j> :exe "resize " . (winheight(0) * 3/2)<CR>
-  nnoremap <C-k> :exe "resize " . (winheight(0) * 2/3)<CR>
-  "nnoremap <C-l> :exe "resize " . (winwidth(0) * 2/3)<c-l><CR>
-  "nnoremap <C-h> :exe "resize " . (winwidth(0) * 3/2)<c-h><CR>
+  " tab-navigation
+    map <leader>tt :tabnew<cr>
+    map <leader>te :tabedit<cr>
+    map <leader>to :tabonly<cr>
+    map <leader>tn :tabnext<cr>
+    map <leader>tp :tabprevious<cr>
+    map <leader>tf :tabfirst<cr>
+    map <leader>tl :tablast<cr>
+    map <leader>tm :tabmove
 
-" arrow-key masochis
-	"inoremap  <Up>     <NOP>
-	"inoremap  <Down>   <NOP>
-	"inoremap  <Left>   <NOP>
-	"inoremap  <Right>  <NOP>
-	"noremap   <Up>     <NOP>
-	"noremap   <Down>   <NOP>
-	"noremap   <Left>   <NOP>
-	"noremap   <Right>  <NOP>
+  " mappings for split-window navigation
+  " with resizing
+    noremap <c-h> <c-w>=<c-w>h<c-w>20>
+    noremap <c-l> <c-w>=<c-w>l<c-w>20>
+    "noremap <c-w>h <c-w>20<<c-w>h<c-w>20>
+    "noremap <c-w>l <c-w>20<<c-w>l<c-w>20>
+    nnoremap <C-j> :exe "resize " . (winheight(0) * 3/2)<CR>
+    nnoremap <C-k> :exe "resize " . (winheight(0) * 2/3)<CR>
+    "nnoremap <C-l> :exe "resize " . (winwidth(0) * 2/3)<c-l><CR>
+    "nnoremap <C-h> :exe "resize " . (winwidth(0) * 3/2)<c-h><CR>
 
-" move by screen line instead by file line
-	nnoremap j gj
-	nnoremap k gk
-	vnoremap j gj
-	vnoremap k gk
+  " arrow-key masochis
+    "inoremap  <Up>     <NOP>
+    "inoremap  <Down>   <NOP>
+    "inoremap  <Left>   <NOP>
+    "inoremap  <Right>  <NOP>
+    "noremap   <Up>     <NOP>
+    "noremap   <Down>   <NOP>
+    "noremap   <Left>   <NOP>
+    "noremap   <Right>  <NOP>
 
 " code-foo
 	syntax on 			"enable syntax-highlighting by default
-	"show linenumbers (doesn't work in conjunction with set relativenumber)
-	"but is also not necessary because you always can jump to a
-	"specific line (stated in an errormessage for example) with :{linenumber}<cr>
-	"set number
   if version >= 700
     set relativenumber "display how far away each line is from the current one, instead absolute line number
   else
-    set numbers
+    set number
   endif    
 	set ruler
 
-" tabs, spaces & indentation
-	set expandtab
+" tabs & spaces 
+	set expandtab "use spaces for indentation (instead of tabs)
 	set tabstop=2
-	set shiftwidth=2
+  set softtabstop=2
+  set shiftwidth=2
+
+" indentation
 	set smartindent
+  "set autoindent
 
 " folding
 	set foldmethod=manual "set folding-method
-	"set foldcolumn=1 "show folds
+  set foldcolumn=1 "show folds
 
 " search (and replace)
 	" make searches use normal regexes
