@@ -4,3 +4,9 @@
 [submodule "dotvim/bundle/gundo"]
 	path = dotvim/bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
