@@ -24,7 +24,7 @@
 
 " autocommands and some other magic
   if has("autocmd")
-    autocmd! bufwritepost vimrc source ~/.vimrc " when vimrc is edited, reload it
+    autocmd! bufwritepost ~/.vimrc source ~/.vimrc " when vimrc is edited, reload it
     filetype plugin indent on                   " currently used because of NERDcommenter
   endif
 
@@ -32,6 +32,7 @@
   let mapleader =   ","  " remap leader key
 	let g:mapleader = ","  " remap leader key in MacVim GUI
   noremap ; :
+  nnoremap <F5> :GundoToggle<CR>
 
   " in insert-mode
   "===============
@@ -46,7 +47,7 @@
   "===============
     " tab to scroll a few lines up/down
     noremap <tab> <C-E>
-    noremap <S-tab> <C-Y>
+    noremap <C-tab> <C-Y>
 
   " tab-navigation
     map <leader>tt :tabnew<cr>
@@ -55,19 +56,15 @@
     map <leader>tp :tabprevious<cr>
     map <leader>tf :tabfirst<cr>
     map <leader>tl :tablast<cr>
-    map <leader>tm :tabmove 
-    map <leader>te :tabedit 
+    map <leader>tm :tabmove
+    map <leader>te :tabedit
 
   " mappings for split-window navigation
   " with resizing
-    noremap <c-h> <c-w>=<c-w>h<c-w>20>
-    noremap <c-l> <c-w>=<c-w>l<c-w>20>
-    "noremap <c-w>h <c-w>20<<c-w>h<c-w>20>
-    "noremap <c-w>l <c-w>20<<c-w>l<c-w>20>
-    nnoremap <C-j> :exe "resize " . (winheight(0) * 3/2)<CR>
-    nnoremap <C-k> :exe "resize " . (winheight(0) * 2/3)<CR>
-    "nnoremap <C-l> :exe "resize " . (winwidth(0) * 2/3)<c-l><CR>
-    "nnoremap <C-h> :exe "resize " . (winwidth(0) * 3/2)<c-h><CR>
+    map <silent> <C-h> <C-w>5<
+    map <silent> <C-j> <C-W>5-
+    map <silent> <C-k> <C-W>5+
+    map <silent> <C-l> <C-w>5>
 
 " code-foo
 	syntax on 			"enable syntax-highlighting by default
@@ -86,7 +83,6 @@
 
 " indentation
 	set smartindent
-  "set autoindent
 
 " folding
 	set foldmethod=manual "set folding-method
@@ -114,7 +110,7 @@
     set lines=57      " set lines to fill the whole screen on 17" MBP
     set gfn=Menlo:h18 " set font
     set guioptions=-t " hide toolbar
-    set gcr=n-v-c:block-Cursor/block-Cursor-blinkwait300-blinkon200-blinkoff0,i-ci:hor30-Cursor-blinkwait300-blinkon200-blinkoff0
+    set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
   endif
 
 
@@ -190,40 +186,19 @@
     nmap <silent> <Right> >>
     nnoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>
     nnoremap <silent> <Down>  <Esc>:call AddEmptyLineAbove()<CR>
-    nnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>
-    nnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>
  
     " visual mode
-    vmap <silent> <Left> <
-    vmap <silent> <Right> >
+    vmap <silent> <Left> <gv
+    vmap <silent> <Right> >gv
     vnoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>gv
     vnoremap <silent> <Down>  <Esc>:call AddEmptyLineAbove()<CR>gv
-    vnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>gv
-    vnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>gv
  
     " insert mode
     imap <silent> <Left> <C-D>
     imap <silent> <Right> <C-T>
     inoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>a
     inoremap <silent> <Down> <Esc>:call AddEmptyLineAbove()<CR>a
-    inoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>a
-    inoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>a
- 
-    " disable modified versions we are not using
-		nnoremap  <C-Up>     <NOP>
-		nnoremap  <C-Down>   <NOP>
-    nnoremap  <C-Left>   <NOP>
-    nnoremap  <C-Right>  <NOP>
-		vnoremap  <C-Up>     <NOP>
-		vnoremap  <C-Down>   <NOP>
-    vnoremap  <C-Left>   <NOP>
-    vnoremap  <C-Right>  <NOP>
-    inoremap  <C-Up>     <NOP>
-    inoremap  <C-Down>   <NOP>
-    inoremap  <C-Left>   <NOP>
-    inoremap  <C-Right>  <NOP>
   endfunction
  
   call SetArrowKeysAsTextShifters()
 " End setting the Arrow-Keys as Text-Shiters
-nnoremap <F5> :GundoToggle<CR>
