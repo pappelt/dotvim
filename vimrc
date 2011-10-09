@@ -47,7 +47,7 @@
   "===============
     " tab to scroll a few lines up/down
     noremap <tab> <C-E>
-    noremap <C-tab> <C-Y>
+    noremap <S-tab> <C-Y>
 
   " tab-navigation
     map <leader>tt :tabnew<cr>
