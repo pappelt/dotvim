@@ -4,7 +4,8 @@
 
 " general settings
 	set nocompatible
-	let $VIMHOME="~/.vim/"
+	" let $VIM="~/.vim"
+	let $VIMHOME="~/Dropbox/dotvim/"
 	set hidden                     " change buffer without saving
 	set noswapfile                 " don't create swap files
 	set autoread                   " Set to auto read when a file is changed from the outside
@@ -24,7 +25,7 @@
 
 " autocommands and some other magic
   if has("autocmd")
-    autocmd! bufwritepost ~/.vimrc source ~/.vimrc " when vimrc is edited, reload it
+    autocmd! bufwritepost ~/.vimrc source ~/Dropbox/dotvim/.vimrc " when vimrc is edited, reload it
     filetype plugin indent on                   " currently used because of NERDcommenter
   endif
 
@@ -106,8 +107,8 @@
 
 " settings in MacVim GUI
   if has("gui_running")
-    set co=174        " set cols to fill the whole screen on 17" MBP
-    set lines=57      " set lines to fill the whole screen on 17" MBP
+    set co=130        " set cols to fill the whole screen on 17" MBP
+    set lines=50      " set lines to fill the whole screen on 17" MBP
     set gfn=Menlo:h18 " set font
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
