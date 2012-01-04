@@ -4,8 +4,8 @@
 
 " general settings
 	set nocompatible
-	" let $VIM="~/.vim"
-	let $VIMHOME="~/Dropbox/dotvim/"
+  let $VIM="~/.vim"
+	"let $VIMHOME="~/Dropbox/dotvim/"
 	set hidden                     " change buffer without saving
 	set noswapfile                 " don't create swap files
 	set autoread                   " Set to auto read when a file is changed from the outside
@@ -25,8 +25,8 @@
 
 " autocommands and some other magic
   if has("autocmd")
-    autocmd! bufwritepost ~/.vimrc source ~/Dropbox/dotvim/.vimrc " when vimrc is edited, reload it
-    filetype plugin indent on                   " currently used because of NERDcommenter
+    autocmd! bufwritepost ~/.vimrc source ~/Dropbox/dotvim/vimrc " when vimrc is edited, reload it
+    filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
 " Key Mappings
