@@ -1,0 +1,3 @@
+set co=130        " set cols to fill the whole screen on 17" MBP
+set lines=50      " set lines to fill the whole screen on 17" MBP
+set gfn=Menlo:h18 " set font

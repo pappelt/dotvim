@@ -4,7 +4,8 @@
 
 " general settings
 	set nocompatible
-	let $VIMHOME="~/.vim/"
+  let $VIM="~/.vim"
+	"let $VIMHOME="~/Dropbox/dotvim/"
 	set hidden                     " change buffer without saving
 	set noswapfile                 " don't create swap files
 	set autoread                   " Set to auto read when a file is changed from the outside
@@ -25,8 +26,8 @@
 
 " autocommands and some other magic
   if has("autocmd")
-    autocmd! bufwritepost ~/.vimrc source ~/.vimrc " when vimrc is edited, reload it
-    filetype plugin indent on                   " currently used because of NERDcommenter
+    autocmd! bufwritepost ~/.vimrc source ~/Dropbox/dotvim/vimrc " when vimrc is edited, reload it
+    filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
 " Key Mappings
@@ -105,15 +106,11 @@
 	set history=700  " remember 700 steps for history
 
 
-" settings in MacVim GUI
+" universal settings in MacVim GUI
   if has("gui_running")
-    " set co=120
-    " set lines=44
-    set guifont=Ubuntu\ Mono\ 12
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
   endif
-
 
 " Function Smart_TabComplete for smart keyword completion with <Tab>
   function! Smart_TabComplete()
