@@ -1,8 +1,8 @@
-[submodule "dotvim/bundle/zencoding"]
-	path = dotvim/bundle/zencoding
+[submodule "bundle/zencoding"]
+	path = bundle/zencoding
 	url = https://github.com/mattn/zencoding-vim.git
-[submodule "dotvim/bundle/gundo"]
-	path = dotvim/bundle/gundo
+[submodule "bundle/gundo"]
+	path = bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
