@@ -4,8 +4,7 @@
 
 " general settings
 	set nocompatible
-  let $VIM="~/.vim"
-	"let $VIMHOME="~/Dropbox/dotvim/"
+  let $VIM="~/.vim/"
 	set hidden                     " change buffer without saving
 	set noswapfile                 " don't create swap files
 	set autoread                   " Set to auto read when a file is changed from the outside
@@ -26,7 +25,12 @@
 
 " autocommands and some other magic
   if has("autocmd")
-    autocmd! bufwritepost ~/.vimrc source ~/Dropbox/dotvim/vimrc " when vimrc is edited, reload it
+    " disable all autocmds for the current group, to counter multiple execution
+    autocmd!
+    " general autocmds
+    autocmd! bufwritepost vimrc source $VIM/vimrc " when vimrc is edited, reload it
+    autocmd! BufNewFile,BufReadPre *.php :map <Leader>t :w\|:!php -l %<cr>
+    autocmd! BufNewFile,BufReadPre *.php :map <Leader>r :w\|:!phpunit %<cr>
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
@@ -110,29 +114,7 @@
   if has("gui_running")
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
+    source $VIM/evulbookpro
   endif
 
-" Function Smart_TabComplete for smart keyword completion with <Tab>
-  function! Smart_TabComplete()
-    let line = getline('.')                         " curline
-    let substr = strpart(line, -1, col('.')+1)      " from start to cursor
-    let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
-    if (strlen(substr)==0)                          " nothing to match on empty string
-      return "\<tab>"
-    endif
-    let has_period = match(substr, '\.') != -1      " position of period, if any
-    let has_slash = match(substr, '\/') != -1       " position of slash, if any
-    if (!has_period && !has_slash)
-      return "\<C-X>\<C-P>"                         " existing text matching
-    elseif ( has_slash )
-      return "\<C-X>\<C-F>"                         " file matching
-    else
-      return "\<C-X>\<C-O>"                         " plugin matching
-    endif
-  endfunction
-	
-"inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-map <Leader>r :w\|php -r %<cr>
-map <Leader>t :w\|php -l %<cr>
-
-source ~/dotvim/arrowkeysAsTextshifters
+source $VIM/arrowkeysAsTextshifters
