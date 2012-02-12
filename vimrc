@@ -28,7 +28,7 @@
     " disable all autocmds for the current group, to counter multiple execution
     autocmd!
     " general autocmds
-    autocmd! bufwritepost vimrc source $VIM/vimrc " when vimrc is edited, reload it
+    autocmd! bufwritepost .vimrc source $VIM/vimrc " when vimrc is edited, reload it
     autocmd! BufNewFile,BufReadPre *.php :map <Leader>t :w\|:!php -l %<cr>
     autocmd! BufNewFile,BufReadPre *.php :map <Leader>r :w\|:!phpunit %<cr>
     filetype plugin indent on                   " currently used by NERDcommenter
@@ -39,6 +39,7 @@
 	let g:mapleader = ","  " remap leader key in MacVim GUI
   noremap ; :
   nnoremap <F5> :GundoToggle<CR>
+  nnoremap <F6> :NERDTreeToggle<CR>
 
   " in insert-mode
   "===============
