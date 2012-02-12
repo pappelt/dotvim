@@ -17,7 +17,7 @@
 
   let guiColorScheme = "PartyBee"
   if (exists("guiColorScheme"))
-    colorscheme PartyBee 		       " load colorscheme BusyBee
+    colorscheme PartyBee
     set cursorline
   else
     colorscheme default            " load colorscheme default
