@@ -15,9 +15,9 @@
   set nowrap
   set tags+=tags;/
 
-  let guiColorScheme = "BusyBee"
+  let guiColorScheme = "PartyBee"
   if (exists("guiColorScheme"))
-    colorscheme BusyBee 		       " load colorscheme BusyBee
+    colorscheme PartyBee 		       " load colorscheme BusyBee
     set cursorline
   else
     colorscheme default            " load colorscheme default
