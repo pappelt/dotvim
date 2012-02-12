@@ -43,25 +43,29 @@
 " Arrow key remapping: Up/Dn = move line up/dn; Left/Right = indent/unindent
 " `Ctrl-Up` and `Ctrl-Down`, instead, deletes or inserts a blank line below the current line
   function! SetArrowKeysAsTextShifters()
-    " normal mode
+   " normal mode
     nmap <silent> <Left> <<
     nmap <silent> <Right> >>
     nnoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>
     nnoremap <silent> <Down>  <Esc>:call AddEmptyLineAbove()<CR>
+    nnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>
+    nnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>
  
     " visual mode
-    vmap <silent> <Left> <gv
-    vmap <silent> <Right> >gv
+    vmap <silent> <Left> <
+    vmap <silent> <Right> >
     vnoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>gv
     vnoremap <silent> <Down>  <Esc>:call AddEmptyLineAbove()<CR>gv
+    vnoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>gv
+    vnoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>gv
  
     " insert mode
     imap <silent> <Left> <C-D>
     imap <silent> <Right> <C-T>
     inoremap <silent> <Up> <Esc>:call DelEmptyLineAbove()<CR>a
     inoremap <silent> <Down> <Esc>:call AddEmptyLineAbove()<CR>a
+    inoremap <silent> <C-Up> <Esc>:call DelEmptyLineBelow()<CR>a
+    inoremap <silent> <C-Down> <Esc>:call AddEmptyLineBelow()<CR>a
   endfunction
- 
   call SetArrowKeysAsTextShifters()
 " End setting the Arrow-Keys as Text-Shiters
-

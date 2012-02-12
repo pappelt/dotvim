@@ -117,5 +117,4 @@
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
     source $VIM/evulbookpro
   endif
-
-source $VIM/arrowkeysAsTextshifters
+source $VIM/arrowkeysAsTextshifters.vim
