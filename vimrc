@@ -15,20 +15,12 @@
   set nowrap
   set tags+=tags;/
 
-  let guiColorScheme = "PartyBee"
-  if (exists("guiColorScheme"))
-    colorscheme PartyBee
-    set cursorline
-  else
-    colorscheme default            " load colorscheme default
-  endif
-
 " autocommands and some other magic
   if has("autocmd")
     " disable all autocmds for the current group, to counter multiple execution
     autocmd!
     " general autocmds
-    autocmd! bufwritepost .vimrc source $VIM/vimrc " when vimrc is edited, reload it
+    "autocmd! bufwritepost $VIM/vimrc source $VIM/vimrc " when vimrc is edited, reload it
     autocmd! BufNewFile,BufReadPre *.php :map <Leader>t :w\|:!php -l %<cr>
     autocmd! BufNewFile,BufReadPre *.php :map <Leader>r :w\|:!phpunit %<cr>
     filetype plugin indent on                   " currently used by NERDcommenter
@@ -39,7 +31,7 @@
 	let g:mapleader = ","  " remap leader key in MacVim GUI
   noremap ; :
   nnoremap <F5> :GundoToggle<CR>
-  nnoremap <F6> :NERDTreeToggle<CR>
+  nnoremap <F6> :NERDTreeTabsToggle<CR>
 
   " in insert-mode
   "===============
@@ -112,9 +104,23 @@
 
 
 " universal settings in MacVim GUI
+  let guiColorScheme = "PartyBee"
+  if (exists("guiColorScheme"))
+    colorscheme PartyBee
+    set cursorline
+  else
+    colorscheme default            " load colorscheme default
+  endif
+
   if has("gui_running")
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
     source $VIM/evulbookpro
   endif
-source $VIM/arrowkeysAsTextshifters.vim
+
+" NerdTreeTabs-Config
+let g:nerdtree_tabs_open_on_console_startup = 0
+let g:nerdtree_tabs_open_on_gui_startup = 0
+
+" load scripts
+  source $VIM/arrowkeysAsTextshifters.vim
