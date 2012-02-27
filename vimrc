@@ -50,13 +50,19 @@
 
   " tab-navigation
     map <leader>tt :tabnew<cr>
-    map <leader>to :tabonly<cr>
     map <leader>tn :tabnext<cr>
     map <leader>tp :tabprevious<cr>
     map <leader>tf :tabfirst<cr>
     map <leader>tl :tablast<cr>
     map <leader>tm :tabmove
-    map <leader>te :tabedit
+    "map <leader>to :tabonly<cr>
+    "map <leader>te :tabedit
+ 
+  " buffer-navigation
+    map <leader>bn :bnext<cr>
+    map <leader>bp :bprev<cr>
+    map <leader>bd :bdelete<cr>
+    map <leader>ba :bad
 
   " mappings for split-window navigation
   " with resizing
@@ -119,8 +125,8 @@
   endif
 
 " NerdTreeTabs-Config
-let g:nerdtree_tabs_open_on_console_startup = 0
-let g:nerdtree_tabs_open_on_gui_startup = 0
+  let g:nerdtree_tabs_open_on_console_startup = 0
+  let g:nerdtree_tabs_open_on_gui_startup = 0
 
 " load scripts
   source $VIM/arrowkeysAsTextshifters.vim

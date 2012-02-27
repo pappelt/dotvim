@@ -16,3 +16,6 @@
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/corntrace/bufexplorer.git
+[submodule "bundle/miniBufExpl"]
+	path = bundle/miniBufExpl
+	url = https://github.com/fholgado/minibufexpl.vim.git
