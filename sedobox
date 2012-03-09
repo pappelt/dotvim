@@ -1,3 +1,7 @@
-" set co=120
-" set lines=44
-set guifont=Ubuntu\ Mono\ 12
+set guifont=Ubuntu\ Mono\ 10
+cd ~/devel
+
+" tabs & spaces 
+  set noexpandtab
+	set tabstop=4
+  set shiftwidth=4
