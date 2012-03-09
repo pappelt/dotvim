@@ -21,8 +21,8 @@
     autocmd!
     " general autocmds
     "autocmd! bufwritepost $VIM/vimrc source $VIM/vimrc " when vimrc is edited, reload it
-    autocmd! BufNewFile,BufReadPre *.php :map <Leader>t :w\|:!php -l %<cr>
-    autocmd! BufNewFile,BufReadPre *.php :map <Leader>r :w\|:!phpunit %<cr>
+    autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
+    autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
@@ -30,7 +30,7 @@
   let mapleader =   ","  " remap leader key
 	let g:mapleader = ","  " remap leader key in MacVim GUI
   noremap ; :
-  nnoremap <F5> :GundoToggle<CR>
+  "nnoremap <F5> :GundoToggle<CR>
   nnoremap <F6> :NERDTreeTabsToggle<CR>
 
   " in insert-mode
@@ -62,6 +62,8 @@
     map <leader>bn :bnext<cr>
     map <leader>bp :bprev<cr>
     map <leader>bd :bdelete<cr>
+    map <leader>bf :bfirst<cr>
+    map <leader>bl :blast<cr>
     map <leader>ba :bad
 
   " mappings for split-window navigation
@@ -79,12 +81,6 @@
     set number
   endif    
 	set ruler
-
-" tabs & spaces 
-	set expandtab "use spaces for indentation (instead of tabs)
-	set tabstop=2
-  set softtabstop=2
-  set shiftwidth=2
 
 " indentation
 	set smartindent
@@ -121,7 +117,7 @@
   if has("gui_running")
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
-    source $VIM/evulbookpro
+    source $VIM/sedobox
   endif
 
 " NerdTreeTabs-Config
@@ -130,3 +126,5 @@
 
 " load scripts
   source $VIM/arrowkeysAsTextshifters.vim
+let g:debuggerPort = 9197
+
