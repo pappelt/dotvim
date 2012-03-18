@@ -117,7 +117,7 @@
   if has("gui_running")
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
-    source $VIM/sedobox
+    source $VIM/evulbookpro
   endif
 
 " NerdTreeTabs-Config
@@ -126,5 +126,3 @@
 
 " load scripts
   source $VIM/arrowkeysAsTextshifters.vim
-let g:debuggerPort = 9197
-
