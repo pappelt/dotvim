@@ -56,3 +56,7 @@ hi PreProc    guifg=#FF6400 guibg=NONE    gui=NONE   ctermfg=230
 
 " Directory Colors
 hi Directory  guifg=#808080 guibg=#202020 gui=NONE ctermfg=244 ctermbg=235
+
+
+" ColumnMargin
+hi ColumnMargin guifg=#FF0000 guibg=#202020 gui=NONE ctermfg=244 ctermbg=235

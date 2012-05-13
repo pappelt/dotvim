@@ -5,11 +5,11 @@
 " general settings
 	set nocompatible
   let $VIM="~/.vim/"
-	set hidden                     " change buffer without saving
-	set noswapfile                 " don't create swap files
-	set autoread                   " Set to auto read when a file is changed from the outside
-	set backspace=indent,eol,start " Intuitive backspacing.
-	set vb t_vb=                   " turn off any errorbell/flash/something
+  set hidden                     " change buffer without saving
+  set noswapfile                 " don't create swap files
+  set autoread                   " Set to auto read when a file is changed from the outside
+  set backspace=indent,eol,start " Intuitive backspacing.
+  set vb t_vb=                   " turn off any errorbell/flash/something
   set nobackup
   set nowritebackup
   set nowrap
@@ -23,6 +23,7 @@
     "autocmd! bufwritepost $VIM/vimrc source $VIM/vimrc " when vimrc is edited, reload it
     autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
     autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
+	au BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
@@ -99,7 +100,7 @@
 	nnoremap <leader><space> :noh<cr>
 
 " command-line
-	set cmdheight=2  " height of the commd line
+	set cmdheight=1  " height of the commd line
 	set laststatus=2 " Show the status line all the time
 	set showcmd      " show commands
 	set history=700  " remember 700 steps for history
