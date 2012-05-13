@@ -23,7 +23,7 @@
     "autocmd! bufwritepost $VIM/vimrc source $VIM/vimrc " when vimrc is edited, reload it
     autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
     autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
-	au BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
+		autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
@@ -124,6 +124,12 @@
 " NerdTreeTabs-Config
   let g:nerdtree_tabs_open_on_console_startup = 0
   let g:nerdtree_tabs_open_on_gui_startup = 0
+
+" Command-T Config
+" maybe checking for if &term =~ "xterm" || &term =~ "screen" is good idea
+  let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
+  let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
+  let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
 
 " load scripts
   source $VIM/arrowkeysAsTextshifters.vim
