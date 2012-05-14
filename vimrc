@@ -23,7 +23,7 @@
     "autocmd! bufwritepost $VIM/vimrc source $VIM/vimrc " when vimrc is edited, reload it
     autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
     autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
-		autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
+    autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
@@ -48,6 +48,8 @@
     " tab to scroll a few lines up/down
     noremap <tab> <C-E>
     noremap <S-tab> <C-Y>
+    noremap <leader>f <C-F>
+    noremap <leader>u <C-U>
 
   " tab-navigation
     map <leader>tt :tabnew<cr>
@@ -75,13 +77,14 @@
     map <silent> <C-l> <C-w>5>
 
 " code-foo
-	syntax on 			"enable syntax-highlighting by default
-  if version >= 700
-    set relativenumber "display how far away each line is from the current one, instead absolute line number
-  else
-    set number
-  endif    
-	set ruler
+syntax on 			"enable syntax-highlighting by default
+set ruler
+
+if version >= 700
+	set relativenumber "display how far away each line is from the current one, instead absolute line number
+else
+	set number
+endif    
 
 " indentation
 	set smartindent
