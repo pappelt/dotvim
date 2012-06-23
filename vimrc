@@ -24,6 +24,9 @@
     autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
     autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
     autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
+    autocmd FileType taglist setlocal norelativenumber
+    "autocmd FileType NERD_tree_1 setlocal winwminidth=60 " currently not
+    "working
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
@@ -32,7 +35,8 @@
 	let g:mapleader = ","  " remap leader key in MacVim GUI
   noremap ; :
   "nnoremap <F5> :GundoToggle<CR>
-  nnoremap <F6> :NERDTreeTabsToggle<CR>
+  nnoremap <F5> :TlistToggle<CR>
+  nnoremap <F6> :NERDTreeMirrorToggle<CR>
 
   " in insert-mode
   "===============
@@ -110,13 +114,13 @@ endif
 
 
 " universal settings in MacVim GUI
-  let guiColorScheme = "PartyBee"
-  if (exists("guiColorScheme"))
-    colorscheme PartyBee
-    set cursorline
-  else
+  "let guiColorScheme = "PartyBee"
+  "if (exists("guiColorScheme"))
+    "colorscheme PartyBee
+    "set cursorline
+  "else
     colorscheme default            " load colorscheme default
-  endif
+  "endif
 
   if has("gui_running")
     set guioptions=-t " hide toolbar
@@ -125,14 +129,37 @@ endif
   endif
 
 " NerdTreeTabs-Config
+if has("NERDTree")
   let g:nerdtree_tabs_open_on_console_startup = 0
   let g:nerdtree_tabs_open_on_gui_startup = 0
+endif
 
 " Command-T Config
 " maybe checking for if &term =~ "xterm" || &term =~ "screen" is good idea
   let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
   let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
   let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
+
+  " cscope
+  if has("cscope")
+	  "set csprg=/usr/local/Cellar/cscope
+	  set csto=0                                   
+	  set cst
+	  set nocsverb
+	  " add any database in current directory
+	  if filereadable("cscope.out")
+		  cs add cscope.out
+		  " else add database pointed to by environment
+	  elseif $CSCOPE_DB != ""
+		  cs add $CSCOPE_DB
+	  endif
+
+	  set cscopequickfix=s-,c-,d-,i-,t-,e-
+	  set csverb
+	  let Tlist_Use_Right_Window=1
+	  let Tlist_WinWidth=60
+	  let Tlist_Enable_Fold_Column=0
+  endif
 
 " load scripts
   source $VIM/arrowkeysAsTextshifters.vim
