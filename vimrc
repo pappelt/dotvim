@@ -113,20 +113,30 @@ endif
 	set history=700  " remember 700 steps for history
 
 
-" universal settings in MacVim GUI
-  "let guiColorScheme = "PartyBee"
-  "if (exists("guiColorScheme"))
-    "colorscheme PartyBee
-    "set cursorline
-  "else
-    colorscheme default            " load colorscheme default
-  "endif
 
   if has("gui_running")
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
-    source $VIM/evulbookpro
+    set gfn=Menlo:h12 " set font
+
+    "universal settings in MacVim GUI
+    let guiColorScheme = "PartyBee"
+    if (exists("guiColorScheme"))
+      colorscheme PartyBee
+      set cursorline
+    else
+      colorscheme default            " load colorscheme default
+    endif
+  else
+    colorscheme synic
   endif
+
+
+" tabs & spaces 
+	 set expandtab "use spaces for indentation (instead of tabs)
+	 set tabstop=2
+	 set softtabstop=2
+	 set shiftwidth=2
 
 " NerdTreeTabs-Config
 if has("NERDTree")
@@ -162,4 +172,4 @@ endif
   endif
 
 " load scripts
-  source $VIM/arrowkeysAsTextshifters.vim
+  source $VIM/scripts/arrowkeysAsTextshifters.vim
