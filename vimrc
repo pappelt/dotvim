@@ -20,15 +20,18 @@
     " disable all autocmds for the current group, to counter multiple execution
     autocmd!
     " general autocmds
-    "autocmd! bufwritepost $VIM/vimrc source $VIM/vimrc " when vimrc is edited, reload it
-    autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
-    autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
-    autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
-    autocmd FileType taglist setlocal norelativenumber
-    "autocmd FileType NERD_tree_1 setlocal winwminidth=60 " currently not
-    "working
+    "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
+    "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
+    "autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
+    autocmd! FileType taglist setlocal norelativenumber
+    autocmd FileType nerdtree setlocal winwminidth=60 " currently not working
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
+
+  "quick-edit mode for vimrc
+
+  noremap <leader>e :e $VIM/vimrc<cr>
+  noremap <leader>w :w\|:so $VIM/vimrc<cr>
 
 " Key Mappings
   let mapleader =   ","  " remap leader key
@@ -152,7 +155,6 @@ endif
 
   " cscope
   if has("cscope")
-	  "set csprg=/usr/local/Cellar/cscope
 	  set csto=0                                   
 	  set cst
 	  set nocsverb
