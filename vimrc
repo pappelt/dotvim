@@ -23,8 +23,7 @@
     "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
     "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
     "autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
-    autocmd! FileType taglist setlocal norelativenumber
-    autocmd FileType nerdtree setlocal winwminidth=60 " currently not working
+    autocmd FileType NERD_tree_1 setlocal winwidth=80 " currently not working
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
@@ -38,7 +37,7 @@
 	let g:mapleader = ","  " remap leader key in MacVim GUI
   noremap ; :
   "nnoremap <F5> :GundoToggle<CR>
-  nnoremap <F5> :TlistToggle<CR>
+  nnoremap <F5> :TagbarToggle<CR>
   nnoremap <F6> :NERDTreeMirrorToggle<CR>
 
   " in insert-mode
@@ -168,10 +167,8 @@ endif
 
 	  set cscopequickfix=s-,c-,d-,i-,t-,e-
 	  set csverb
-	  let Tlist_Use_Right_Window=1
-	  let Tlist_WinWidth=60
-	  let Tlist_Enable_Fold_Column=0
   endif
 
 " load scripts
   source $VIM/scripts/arrowkeysAsTextshifters.vim
+  source $VIM/scripts/shell.vim
