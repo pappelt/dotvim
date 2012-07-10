@@ -20,19 +20,25 @@
     " disable all autocmds for the current group, to counter multiple execution
     autocmd!
     " general autocmds
-    "autocmd! bufwritepost $VIM/vimrc source $VIM/vimrc " when vimrc is edited, reload it
-    autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
-    autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
-    autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
+    "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
+    "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
+    "autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
+    autocmd FileType NERD_tree_1 setlocal winwidth=80 " currently not working
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
+
+  "quick-edit mode for vimrc
+
+  noremap <leader>e :e $VIM/vimrc<cr>
+  noremap <leader>w :w\|:so $VIM/vimrc<cr>
 
 " Key Mappings
   let mapleader =   ","  " remap leader key
 	let g:mapleader = ","  " remap leader key in MacVim GUI
   noremap ; :
   "nnoremap <F5> :GundoToggle<CR>
-  nnoremap <F6> :NERDTreeTabsToggle<CR>
+  nnoremap <F5> :TagbarToggle<CR>
+  nnoremap <F6> :NERDTreeMirrorToggle<CR>
 
   " in insert-mode
   "===============
@@ -109,24 +115,36 @@ endif
 	set history=700  " remember 700 steps for history
 
 
-" universal settings in MacVim GUI
-  let guiColorScheme = "PartyBee"
-  if (exists("guiColorScheme"))
-    colorscheme PartyBee
-    set cursorline
-  else
-    colorscheme default            " load colorscheme default
-  endif
 
   if has("gui_running")
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
-    source $VIM/evulbookpro
+    set gfn=Menlo:h12 " set font
+
+    "universal settings in MacVim GUI
+    let guiColorScheme = "PartyBee"
+    if (exists("guiColorScheme"))
+      colorscheme PartyBee
+      set cursorline
+    else
+      colorscheme default            " load colorscheme default
+    endif
+  else
+    colorscheme synic
   endif
 
+
+" tabs & spaces 
+	 set expandtab "use spaces for indentation (instead of tabs)
+	 set tabstop=2
+	 set softtabstop=2
+	 set shiftwidth=2
+
 " NerdTreeTabs-Config
+if has("NERDTree")
   let g:nerdtree_tabs_open_on_console_startup = 0
   let g:nerdtree_tabs_open_on_gui_startup = 0
+endif
 
 " Command-T Config
 " maybe checking for if &term =~ "xterm" || &term =~ "screen" is good idea
@@ -134,5 +152,23 @@ endif
   let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
   let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
 
+  " cscope
+  if has("cscope")
+	  set csto=0                                   
+	  set cst
+	  set nocsverb
+	  " add any database in current directory
+	  if filereadable("cscope.out")
+		  cs add cscope.out
+		  " else add database pointed to by environment
+	  elseif $CSCOPE_DB != ""
+		  cs add $CSCOPE_DB
+	  endif
+
+	  set cscopequickfix=s-,c-,d-,i-,t-,e-
+	  set csverb
+  endif
+
 " load scripts
-  source $VIM/arrowkeysAsTextshifters.vim
+  source $VIM/scripts/arrowkeysAsTextshifters.vim
+  source $VIM/scripts/shell.vim

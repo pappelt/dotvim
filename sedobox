@@ -1,6 +1,0 @@
-set guifont=Ubuntu\ Mono\ 10
-
-" tabs & spaces 
-  set noexpandtab
-	set tabstop=4
-  set shiftwidth=4
