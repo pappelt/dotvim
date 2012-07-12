@@ -17,5 +17,5 @@
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
 [submodule "bundle/tagbar"]
-  submodulepath = bundle/tagbar
-  submoduleurl = git://github.com/majutsushi/tagbar.git
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
