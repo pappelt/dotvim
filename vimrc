@@ -130,7 +130,7 @@ endif
       colorscheme default            " load colorscheme default
     endif
   else
-    colorscheme synic
+    colorscheme solarized
   endif
 
 
