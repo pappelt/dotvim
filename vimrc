@@ -130,6 +130,7 @@ endif
       colorscheme default            " load colorscheme default
     endif
   else
+    set background=dark
     colorscheme solarized
   endif
 
