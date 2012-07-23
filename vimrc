@@ -23,7 +23,7 @@
     "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
     "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
     "autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
-    autocmd FileType NERD_tree_1 setlocal winwidth=80 " currently not working
+    "autocmd FileType NERD_tree_1 setlocal winwidth=80 " currently not working
     filetype plugin indent on                   " currently used by NERDcommenter
   endif
 
@@ -86,7 +86,7 @@
 syntax on 			"enable syntax-highlighting by default
 set ruler
 
-if version >= 700
+if version >= 730
 	set relativenumber "display how far away each line is from the current one, instead absolute line number
 else
 	set number
