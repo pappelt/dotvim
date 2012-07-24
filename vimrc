@@ -83,7 +83,7 @@
     map <silent> <C-l> <C-w>5>
 
 " code-foo
-syntax on 			"enable syntax-highlighting by default
+syntax enable 			"enable syntax-highlighting by default
 set ruler
 
 if version >= 730
@@ -130,6 +130,20 @@ endif
       colorscheme default            " load colorscheme default
     endif
   else
+    " ------------------------------------------------------------------
+    " Solarized Colorscheme Config
+    " ------------------------------------------------------------------
+    let g:solarized_termtrans=0
+    let g:solarized_degrade=0
+    let g:solarized_bold=1
+    let g:solarized_underline=1
+    let g:solarized_italic=1
+    let g:solarized_termcolors=16
+    let g:solarized_contrast="normal"
+    let g:solarized_visibility="low"
+    let g:solarized_menu=1
+    let g:solarized_diffmode="high" "default value is normal
+
     set background=dark
     colorscheme solarized
   endif
