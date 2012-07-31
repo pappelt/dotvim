@@ -86,11 +86,11 @@
 syntax enable 			"enable syntax-highlighting by default
 set ruler
 
-if version >= 730
+"if version > 720
 	set relativenumber "display how far away each line is from the current one, instead absolute line number
-else
-	set number
-endif    
+"else
+	"set number
+"endif    
 
 " indentation
 	set smartindent
