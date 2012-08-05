@@ -161,29 +161,28 @@ if has("NERDTree")
   let g:nerdtree_tabs_open_on_gui_startup = 0
 endif
 
-" Command-T Config
-" maybe checking for if &term =~ "xterm" || &term =~ "screen" is good idea
-  let g:CommandTCancelMap     = ['<ESC>', '<C-c>']
-  let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<ESC>OB']
-  let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<ESC>OA']
-
-  " cscope
-  if has("cscope")
-	  set csto=0                                   
-	  set cst
-	  set nocsverb
-	  " add any database in current directory
-	  if filereadable("cscope.out")
-		  cs add cscope.out
-		  " else add database pointed to by environment
-	  elseif $CSCOPE_DB != ""
-		  cs add $CSCOPE_DB
-	  endif
-
-	  set cscopequickfix=s-,c-,d-,i-,t-,e-
-	  set csverb
+" cscope
+if has("cscope")
+  set csto=0                                   
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add cscope.out
+    " else add database pointed to by environment
+  elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
   endif
+
+  set cscopequickfix=s-,c-,d-,i-,t-,e-
+  set csverb
+endif
+
+" vimux
+  " Prompt for a command to run
+  "<Leader>vp :VimuxPromptCommand<CR>
 
 " load scripts
   source $VIM/scripts/arrowkeysAsTextshifters.vim
   source $VIM/scripts/shell.vim
+  source $VIM/bundle/solarized/autoload/togglebg.vim
