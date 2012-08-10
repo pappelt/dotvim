@@ -186,3 +186,6 @@ endif
   source $VIM/scripts/arrowkeysAsTextshifters.vim
   source $VIM/scripts/shell.vim
   source $VIM/bundle/solarized/autoload/togglebg.vim
+
+" Abbreviations
+abbr vd var_dump(
