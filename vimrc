@@ -36,6 +36,7 @@ noremap <leader>w :w\|:so $VIM/vimrc<cr>
 let mapleader =   ","  " remap leader key
 let g:mapleader = ","  " remap leader key in MacVim GUI
 noremap ; :
+
 " F-Keys
 "nnoremap <F5> :GundoToggle<CR>
 "nnoremap <F5> :TagbarToggle<CR>
@@ -74,7 +75,7 @@ map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 "map <leader>to :tabonly<cr>
-"map <leader>te :tabedit
+map <leader>te :tabedit
 noremap <A-Right> :tabnext<cr>
 noremap <A-Left> :tabprevious<cr>
 
@@ -125,24 +126,11 @@ if has("gui_running")
   set gfn=Menlo:h12 " set font
 endif
 
-" ------------------------------------------------------------------
-" Solarized Colorscheme Config
-" ------------------------------------------------------------------
-"let g:solarized_termtrans=0
-"let g:solarized_degrade=0
-"let g:solarized_bold=1
-"let g:solarized_underline=1
-"let g:solarized_italic=1
-"let g:solarized_termcolors=16
-"let g:solarized_contrast="normal"
-"let g:solarized_visibility="low"
-"let g:solarized_menu=1
-"let g:solarized_diffmode="high" "default value is normal
-
 set background=dark
 colorscheme solarized
 
 set cursorline
+set relativenumber
 
 " tabs & spaces 
 set expandtab "use spaces for indentation (instead of tabs)
