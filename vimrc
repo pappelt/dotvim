@@ -42,6 +42,8 @@ noremap ; :
 "nnoremap <F6> :NERDTreeMirrorToggle<CR>
 set pastetoggle=<F8>
 
+" nerdtree - don't use fancy arrows
+let g:NERDTreeDirArrows=0
 
 " in insert-mode
 "===============
@@ -73,6 +75,8 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 "map <leader>to :tabonly<cr>
 "map <leader>te :tabedit
+noremap <A-Right> :tabnext<cr>
+noremap <A-Left> :tabprevious<cr>
 
 " buffer-navigation
 map <leader>bn :bnext<cr>
@@ -91,12 +95,6 @@ map <silent> <C-l> <C-w>5>
 
 " code-foo
 syntax enable 			"enable syntax-highlighting by default
-
-"if version > 720
-set relativenumber "display how far away each line is from the current one, instead absolute line number
-"else
-"set number
-"endif    
 
 " indentation
 set smartindent
@@ -119,7 +117,7 @@ set cmdheight=1  " height of the commd line
 set laststatus=2 " Show the status line all the time
 set showcmd      " show commands
 set history=700  " remember 700 steps for history
-"set ruler
+set ruler
 
 if has("gui_running")
   set guioptions=-t " hide toolbar
@@ -130,16 +128,16 @@ endif
 " ------------------------------------------------------------------
 " Solarized Colorscheme Config
 " ------------------------------------------------------------------
-let g:solarized_termtrans=0
-let g:solarized_degrade=0
-let g:solarized_bold=1
-let g:solarized_underline=1
-let g:solarized_italic=1
-let g:solarized_termcolors=16
-let g:solarized_contrast="normal"
-let g:solarized_visibility="low"
-let g:solarized_menu=1
-let g:solarized_diffmode="high" "default value is normal
+"let g:solarized_termtrans=0
+"let g:solarized_degrade=0
+"let g:solarized_bold=1
+"let g:solarized_underline=1
+"let g:solarized_italic=1
+"let g:solarized_termcolors=16
+"let g:solarized_contrast="normal"
+"let g:solarized_visibility="low"
+"let g:solarized_menu=1
+"let g:solarized_diffmode="high" "default value is normal
 
 set background=dark
 colorscheme solarized
@@ -182,4 +180,4 @@ endif
   source $VIM/bundle/solarized/autoload/togglebg.vim
 
 " Abbreviations
-abbr vd var_dump(
+  abbr vd var_dump(
