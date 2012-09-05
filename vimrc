@@ -38,16 +38,20 @@ let g:mapleader = ","  " remap leader key in MacVim GUI
 noremap ; :
 " F-Keys
 "nnoremap <F5> :GundoToggle<CR>
-nnoremap <F5> :TagbarToggle<CR>
-nnoremap <F6> :NERDTreeMirrorToggle<CR>
+"nnoremap <F5> :TagbarToggle<CR>
+"nnoremap <F6> :NERDTreeMirrorToggle<CR>
 set pastetoggle=<F8>
 
 
 " in insert-mode
 "===============
 " tab to keyword-completion
-inoremap <tab> <C-N>
-inoremap <S-tab> <C-P>
+" SuperTab-Setting
+"let g:SuperTabDefaultCompletionType = "context"
+" SuperTabDefaultCompletionType = "context" behaves utterly strange
+
+"inoremap <tab> <C-N>
+"inoremap <S-tab> <C-P>
 
 " remap jj to ESC
 inoremap jj <ESC>
@@ -149,10 +153,10 @@ set softtabstop=2
 set shiftwidth=2
 
 " NerdTreeTabs-Config
-if has("NERDTree")
+"if has("NERDTree")
   let g:nerdtree_tabs_open_on_console_startup = 0
   let g:nerdtree_tabs_open_on_gui_startup = 0
-endif
+"endif
 
 " cscope
 if has("cscope")
@@ -171,9 +175,6 @@ if has("cscope")
   set csverb
 endif
 
-" vimux
-  " Prompt for a command to run
-  "<Leader>vp :VimuxPromptCommand<CR>
 
 " load scripts
   source $VIM/scripts/arrowkeysAsTextshifters.vim
