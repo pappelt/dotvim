@@ -120,7 +120,7 @@ set background=dark
 colorscheme solarized
 
 set cursorline
-set relativenumber
+set number
 
 " tabs & spaces 
 set expandtab "use spaces for indentation (instead of tabs)
