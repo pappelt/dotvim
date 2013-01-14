@@ -28,7 +28,6 @@ if has("autocmd")
 endif
 
 "quick-edit mode for vimrc
-
 noremap <leader>e :e $VIM/vimrc<cr>
 noremap <leader>w :w\|:so $VIM/vimrc<cr>
 
@@ -37,21 +36,12 @@ let mapleader =   ","  " remap leader key
 let g:mapleader = ","  " remap leader key in MacVim GUI
 noremap ; :
 
-" F-Keys
-"nnoremap <F5> :GundoToggle<CR>
-"nnoremap <F5> :TagbarToggle<CR>
-"nnoremap <F6> :NERDTreeMirrorToggle<CR>
+" additional views
+nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>n :NERDTreeMirrorToggle<CR>
+
 set pastetoggle=<F8>
 
-" nerdtree - don't use fancy arrows
-let g:NERDTreeDirArrows=0
-
-" in insert-mode
-"===============
-" tab to keyword-completion
-" SuperTab-Setting
-"let g:SuperTabDefaultCompletionType = "context"
-" SuperTabDefaultCompletionType = "context" behaves utterly strange
 
 "inoremap <tab> <C-N>
 "inoremap <S-tab> <C-P>
@@ -64,28 +54,28 @@ inoremap jj <ESC>
 " tab to scroll a few lines up/down
 noremap <tab> <C-E>
 noremap <S-tab> <C-Y>
+
+" f & u to scroll pagewise
 noremap <leader>f <C-F>
 noremap <leader>u <C-U>
 
 " tab-navigation
+nnoremap t :tabnext<cr>
+nnoremap T :tabprevious<cr>
+
 map <leader>tt :tabnew<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
-"map <leader>to :tabonly<cr>
-map <leader>te :tabedit
-noremap <A-Right> :tabnext<cr>
-noremap <A-Left> :tabprevious<cr>
 
 " buffer-navigation
-map <leader>bn :bnext<cr>
-map <leader>bp :bprev<cr>
+nnoremap b :bnext<cr>
+nnoremap B :bprev<cr>
+
+map <leader>ba :bad
 map <leader>bd :bdelete<cr>
 map <leader>bf :bfirst<cr>
 map <leader>bl :blast<cr>
-map <leader>ba :bad
 
 " mappings for split-window navigation
 " with resizing
@@ -140,6 +130,9 @@ set shiftwidth=2
 
 " NerdTreeTabs-Config
 "if has("NERDTree")
+  " don't use fancy arrows
+  let g:NERDTreeDirArrows=0
+  " don't open on startup
   let g:nerdtree_tabs_open_on_console_startup = 0
   let g:nerdtree_tabs_open_on_gui_startup = 0
 "endif
@@ -165,7 +158,6 @@ endif
 " load scripts
   source $VIM/scripts/arrowkeysAsTextshifters.vim
   source $VIM/scripts/shell.vim
-  source $VIM/bundle/solarized/autoload/togglebg.vim
 
 " Abbreviations
   abbr vd var_dump(
