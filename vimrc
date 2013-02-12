@@ -42,9 +42,9 @@ nnoremap <leader>n :NERDTreeMirrorToggle<CR>
 
 set pastetoggle=<F8>
 
-
-"inoremap <tab> <C-N>
-"inoremap <S-tab> <C-P>
+" TAB-Completion
+inoremap <tab> <C-N>
+inoremap <S-tab> <C-P>
 
 " remap jj to ESC
 inoremap jj <ESC>
@@ -69,9 +69,8 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 
 " buffer-navigation
-nnoremap b :bnext<cr>
-nnoremap B :bprev<cr>
-
+map <leader>bn :bnext<cr>
+map <leader>bp :bprev<cr>
 map <leader>ba :bad
 map <leader>bd :bdelete<cr>
 map <leader>bf :bfirst<cr>
@@ -116,7 +115,7 @@ if has("gui_running")
   set gfn=Menlo:h12 " set font
 endif
 
-set background=dark
+set background=light
 colorscheme solarized
 
 set cursorline
@@ -157,7 +156,6 @@ endif
 
 " load scripts
   source $VIM/scripts/arrowkeysAsTextshifters.vim
-  source $VIM/scripts/shell.vim
 
 " Abbreviations
   abbr vd var_dump(
