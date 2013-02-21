@@ -22,9 +22,13 @@ if has("autocmd")
   " general autocmds
   "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>t :w\|:!php -l %<cr>
   "autocmd! BufNewFile,BufReadPre *.php* :map <Leader>r :w\|:!phpunit %<cr>
-  "autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', '\%>80v.\+', -1)
+  "autocmd! BufWinEnter *.php* let w:m2=matchadd('ColumnMargin', "'\%>80v.\+', -1) " highlight lines longer than 79 chars
   "autocmd FileType NERD_tree_1 setlocal winwidth=80 " currently not working
   filetype plugin indent on                   " currently used by NERDcommenter
+  augroup vimrc_autocmds
+    "autocmd BufEnter * highlight OverLength ctermbg=darkgrey
+    "autocmd BufEnter * match OverLength /\%74v.*/
+  augroup END
 endif
 
 "quick-edit mode for vimrc
@@ -39,8 +43,8 @@ noremap ; :
 
 " F-Keys
 "nnoremap <F5> :GundoToggle<CR>
-"nnoremap <F5> :TagbarToggle<CR>
-"nnoremap <F6> :NERDTreeMirrorToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>n :NERDTreeMirrorToggle<CR>
 set pastetoggle=<F8>
 
 " nerdtree - don't use fancy arrows
@@ -53,8 +57,8 @@ let g:NERDTreeDirArrows=0
 "let g:SuperTabDefaultCompletionType = "context"
 " SuperTabDefaultCompletionType = "context" behaves utterly strange
 
-"inoremap <tab> <C-N>
-"inoremap <S-tab> <C-P>
+inoremap <tab> <C-N>
+inoremap <S-tab> <C-P>
 
 " remap jj to ESC
 inoremap jj <ESC>
@@ -68,16 +72,14 @@ noremap <leader>f <C-F>
 noremap <leader>u <C-U>
 
 " tab-navigation
-map <leader>tt :tabnew<cr>
-map <leader>tn :tabnext<cr>
+map t :tabnew<cr>
+map T :tabnext<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 "map <leader>to :tabonly<cr>
 map <leader>te :tabedit
-noremap <A-Right> :tabnext<cr>
-noremap <A-Left> :tabprevious<cr>
 
 " buffer-navigation
 map <leader>bn :bnext<cr>
@@ -98,7 +100,7 @@ map <silent> <C-l> <C-w>5>
 syntax enable 			"enable syntax-highlighting by default
 
 " indentation
-set smartindent
+"set smartindent
 
 " folding
 set foldmethod=manual "set folding-method
@@ -128,6 +130,8 @@ endif
 
 set background=dark
 colorscheme solarized
+" toggle light/dark background for solarized theme
+map <leader>s :ToggleBG<CR>
 
 set cursorline
 set relativenumber
@@ -161,11 +165,29 @@ if has("cscope")
   set csverb
 endif
 
+ " Prompt for a command to run map
+ map<Leader>vp :VimuxPromptCommand<CR>
+
+ " Run last command executed by VimuxRunCommand
+ map <Leader>vl :VimuxRunLastCommand<CR>
+
+ " Close vim tmux runner opened by VimuxRunCommand
+ map <Leader>vq :VimuxCloseRunner<CR>
+
+
 
 " load scripts
   source $VIM/scripts/arrowkeysAsTextshifters.vim
   source $VIM/scripts/shell.vim
+  source $VIM/bundle/dgbp/plugin/dbgpavim.vim
   source $VIM/bundle/solarized/autoload/togglebg.vim
 
+" fuzzyfinder
+map <leader>f :FufFileWithCurrentBufferDir<cr>
+map <leader>F :FufFile<cr>
+map <leader>b :FufBuffer<cr>
+map <leader>j :FufJumpList<cr>
+
+
 " Abbreviations
-  abbr vd var_dump(
+abbr vd var_dump(
