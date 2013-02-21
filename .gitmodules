@@ -10,18 +10,12 @@
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/corntrace/bufexplorer.git
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = git://git.wincent.com/command-t.git
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
 [submodule "bundle/solarized"]
 	path = bundle/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/dgbp"]
-	path = bundle/dgbp
-	url = git://github.com/brookhong/DBGPavim.git
 [submodule "bundle/vimux"]
 	path = bundle/vimux
 	url = git://github.com/benmills/vimux.git
