@@ -64,8 +64,8 @@ noremap <leader>f <C-F>
 noremap <leader>u <C-U>
 
 " tab-navigation
-nnoremap t :tabnext<cr>
-nnoremap T :tabprevious<cr>
+map <leader>, :tabnext<cr>
+map <leader>. :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
