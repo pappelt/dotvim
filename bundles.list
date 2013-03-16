@@ -1,0 +1,9 @@
+git://github.com/godlygeek/tabular.git
+git://github.com/scrooloose/nerdtree.git
+git://github.com/majutsushi/tagbar.git
+git://github.com/altercation/vim-colors-solarized.git
+git://github.com/benmills/vimux.git
+git://github.com/clones/vim-fuzzyfinder.git
+git://github.com/slack/vim-l9.git
+git://github.com/scrooloose/nerdcommenter.git
+git://github.com/walm/jshint.vim.git
