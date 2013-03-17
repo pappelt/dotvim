@@ -1,5 +1,6 @@
 " pathogen config
 execute pathogen#infect()
+set rtp+=/Users/pa/Dropbox/dotfiles/bin/powerline/powerline/bindings/vim
 
 " general settings
 set nocompatible
@@ -35,9 +36,11 @@ endif
   let mapleader =   ","  " remap leader key
   let g:mapleader = ","  " remap leader key in MacVim GUI
 
+" search & replace
+ map <leader>s :%s///gc
 " solarized
   " toggle light/dark background for solarized theme
-  map <leader>s :ToggleBG<CR>
+  map <leader>S :ToggleBG<CR>
 
 " vimux
   " Prompt for a command to run map
@@ -172,9 +175,11 @@ endif
 " colors & gui-settings
   set background=dark
   colorscheme solarized
+  let g:Powerline_colorscheme = 'solarized256'
+  "let g:Powerline_symbols = 'unicode'
 
   if has("gui_running")
     set guioptions=-t " hide toolbar
     set gcr=n-v-c:block-Cursor/block-Cursor-blinkon0-blinkoff0,i-ci:hor30-Cursor-blinkwait500-blinkon500-blinkoff500
-    set gfn="Source Code Pro":h14 " set font
+    set gfn="Source Code Pro for Powerline":h14 " set font
   endif
