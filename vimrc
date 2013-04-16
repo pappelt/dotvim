@@ -38,9 +38,10 @@ endif
 
 " search & replace
  map <leader>s :%s///gc
+ map <leader>S :s///gc
 " solarized
   " toggle light/dark background for solarized theme
-  map <leader>S :ToggleBG<CR>
+  map <leader>q :ToggleBG<CR>
 
 " vimux
   " Prompt for a command to run map
@@ -76,6 +77,8 @@ endif
   " remap jj to ESC
   "inoremap jj <ESC>
   noremap ; :
+  map <leader>T= :Tabularize /=
+  map <leader>T=> :Tabularize /=>
 
   set pastetoggle=<F8>
 
@@ -92,15 +95,13 @@ endif
   map <leader>. :tabprevious<cr>
   map <leader>tf :tabfirst<cr>
   map <leader>tl :tablast<cr>
-  map <leader>tm :tabmove
-  map <leader>te :tabedit
   map <leader>tt :tabnew<cr>
-  "map <leader>to :tabonly<cr>
+  map <leader>te :tabedit
 
   " buffer-navigation
-  noremap <C-n> :bnext<cr>
-  noremap <C-b> :bprev<cr>
-  map <leader>ba :bad
+  map <leader>bn :bnext<cr>
+  map <leader>bp :bprev<cr>
+  "map <leader>ba :bad
   map <leader>bd :bdelete<cr>
   map <leader>bf :bfirst<cr>
   map <leader>bl :blast<cr>
